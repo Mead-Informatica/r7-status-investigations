@@ -1,0 +1,172 @@
+<META CONTENT="text/html; charset=utf-8" HTTP-EQUIV="Content-Type">
+<html xmlns="http://www.w3.org/TR/REC-html40" xmlns:o="urn:schemas-microsoft-com:office:office">
+
+<head>
+    <meta content="Microsoft Word 15 (filtered medium)" name=Generator>
+    <!--[if !mso]>
+    <style>v\:* {behavior:url(#default#VML);}
+o\:* {behavior:url(#default#VML);}
+w\:* {behavior:url(#default#VML);}
+.shape {behavior:url(#default#VML);}
+</style><![endif]-->
+
+    <style>
+        <!--
+        /* Font Definitions */
+
+        @font-face {
+            font-family: "MS Gothic";
+            panose-1: 2 11 6 9 7 2 5 8 2 4;
+        }
+
+        @font-face {
+            font-family: "Cambria Math";
+            panose-1: 2 4 5 3 5 4 6 3 2 4;
+        }
+
+        @font-face {
+            font-family: Calibri;
+            panose-1: 2 15 5 2 2 2 4 3 2 4;
+        }
+
+        @font-face {
+            font-family: Tahoma;
+            panose-1: 2 11 6 4 3 5 4 4 2 4;
+        }
+
+        @font-face {
+            font-family: "\@MS Gothic";
+            panose-1: 2 11 6 9 7 2 5 8 2 4;
+        }
+        /* Style Definitions */
+
+        p.MsoNormal,
+        li.MsoNormal,
+        div.MsoNormal {
+            margin: 0cm;
+            margin-bottom: .0001pt;
+            font-size: 11.0pt;
+            font-family: "Calibri", sans-serif;
+        }
+
+        span.StileMessaggioDiPostaElettronica17 {
+            mso-style-type: personal-compose;
+            font-family: "Calibri", sans-serif;
+            color: windowtext;
+        }
+
+        .MsoChpDefault {
+            mso-style-type: export-only;
+            font-family: "Calibri", sans-serif;
+        }
+
+        @page WordSection1 {
+            size: 612.0pt 792.0pt;
+            margin: 72.0pt 72.0pt 72.0pt 72.0pt;
+        }
+
+        div.WordSection1 {
+            page: WordSection1;
+        }
+
+        -->
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 70%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+</style>
+    <!--[if gte mso 9]>
+    <xml>
+        <o:shapedefaults v:ext="edit" spidmax="1026"/>
+    </xml><![endif]-->
+    <!--[if gte mso 9]>
+    <xml>
+        <o:shapelayout v:ext="edit">
+            <o:idmap v:ext="edit" data="1"/>
+        </o:shapelayout>
+    </xml><![endif]-->
+</head>
+
+<body lang=EN-US link="#0563C1" vlink="#954F72">
+<div class=WordSection1>
+	
+    <h2 style="color:#e25c25">OPEN ALERTS</h2>
+	<p>Verificare con urgenza in quanto non risultano gestiti da più di 24h</p>
+    <h4>Totali: {{tot_open}}</h4>
+    <table>
+        <tr>
+            <th bgcolor="#e25c25" ><p style="color:#ffffff">CreationTime</p></th>
+            <th bgcolor="#e25c25" ><p style="color:#ffffff">Title</p></th>
+            <th bgcolor="#e25c25" ><p style="color:#ffffff">Severity</p></th>
+            <th bgcolor="#e25c25" ><p style="color:#ffffff">Assegnazione</p></th>
+            <th bgcolor="#e25c25" ><p style="color:#ffffff">URL</p></th>
+        </tr>
+        <tr>
+    {% for my_item in opens %}
+        {% if loop.index is divisibleby 5 %}
+            <td>{{my_item}}</td></tr><tr>
+         {% else %}
+            <td>{{my_item}}</td>
+         {% endif %}
+    {% endfor %}
+    </table>
+
+
+    <h2 style="color:#e25c25">INVESTIGATING ALERTS</h2>
+	<p>Alerts in gestione da più di 24h, verificare se da mettere in waiting o chiudere</p>
+    <h4>Totali: {{tot_inv}}</h4>    
+    <table>
+    <tr>
+        <th bgcolor="#e25c25" ><p style="color:#ffffff">CreationTime</p></th>
+        <th bgcolor="#e25c25" ><p style="color:#ffffff">Title</p></th>
+        <th bgcolor="#e25c25" ><p style="color:#ffffff">Severity</p></th>
+        <th bgcolor="#e25c25" ><p style="color:#ffffff">Assegnazione</p></th>
+        <th bgcolor="#e25c25" ><p style="color:#ffffff">URL</p></th>
+    </tr>
+    <tr>
+    {% for my_item in invs %}
+        {% if loop.index is divisibleby 5 %}
+             <td>{{my_item}}</td></tr><tr>
+         {% else %}
+            <td>{{my_item}}</td>
+         {% endif %}
+    {% endfor %}
+    </table>   
+    
+    
+    <h2 style="color:#e25c25">WAITING ALERTS</h2>
+	<p>Alerts in attesa di risposta da più di 24h, verificare se sollecitare o chiudere</p>
+    <h4>Totali: {{tot_wait}}</h4>        
+    <table>
+        <tr>
+            <th bgcolor="#e25c25" ><p style="color:#ffffff">CreationTime</p></th>
+            <th bgcolor="#e25c25" ><p style="color:#ffffff">Title</p></th>
+            <th bgcolor="#e25c25" ><p style="color:#ffffff">Severity</p></th>
+            <th bgcolor="#e25c25" ><p style="color:#ffffff">Assegnazione</p></th>
+            <th bgcolor="#e25c25" ><p style="color:#ffffff">URL</p></th>
+        </tr>
+        <tr>
+        {% for my_item in waits %}
+            {% if loop.index is divisibleby 5 %}
+                 <td>{{my_item}}</td></tr><tr>
+             {% else %}
+                <td>{{my_item}}</td>
+             {% endif %}
+        {% endfor %}
+        </table>   
+    <br>
+	<span lang=IT style='font-size:6.0pt;mso-fareast-language:IT'><o:p></o:p></span></p><p class=MsoNormal><span lang=IT><o:p>&nbsp;</o:p></span></p></div></body></html>
+
+</p><p class=MsoNormal style='text-autospace:none'><span lang=IT style='mso-fareast-language:IT'><o:p>&nbsp;</o:p></span></p><p class=MsoNormal style='text-autospace:none'><b><i><span lang=IT style='font-size:10.0pt;color:navy;mso-fareast-language:IT'>Security Operation Center</span></i></b><span lang=IT style='font-size:10.0pt;color:black;mso-fareast-language:IT'><o:p></o:p></span></p><p class=MsoNormal><span lang=IT style='font-size:8.0pt;color:navy;mso-fareast-language:IT'>Mail: </span><span lang=IT style='mso-fareast-language:IT'><a href="mailto:soc@meadinformatica.it"><span style='font-size:8.0pt;color:navy'>soc@meadinformatica.it</span></a></span><span lang=IT style='font-size:8.0pt;color:navy;mso-fareast-language:IT'> <o:p></o:p></span></p><p class=MsoNormal><span lang=IT style='font-size:8.0pt;color:navy;mso-fareast-language:IT'><o:p>&nbsp;</o:p></span></p><p class=MsoNormal><i><span lang=IT style='font-size:8.0pt;color:navy;mso-fareast-language:IT'>La soddisfazione dei clienti è il nostro obiettivo.<o:p></o:p></span></i></p><p class=MsoNormal><i></a> <o:p></o:p></span></i></p><p class=MsoNormal style='text-autospace:none'><span lang=IT style='font-size:4.0pt;mso-fareast-language:IT'><img border=0 width=213 height=1 style='width:2.2222in;height:.0138in' id="Immagine_x0020_1" src="cid:image001.jpg@01D740F4.D5511E20"></span><b><span lang=IT style='color:#00006D;mso-fareast-language:IT'><o:p></o:p></span></b></p><p class=MsoNormal style='text-autospace:none'><span lang=IT style='mso-fareast-language:IT'> <br> <img border=0 width=114 height=77 style='width:1.1875in;height:.8055in' id="Immagine_x0020_2" 
+    src="https://www.meadinformatica.it/wp-content/uploads/2018/04/mead-logo_h90.png">
+    <o:p></o:p></span></p><br><p class=MsoNormal style='text-autospace:none'><b><span lang=IT style='font-size:10.0pt;color:#13682B;mso-fareast-language:IT'>Mead Informatica Srl </span></b><span lang=IT style='font-size:10.0pt;mso-fareast-language:IT'><o:p></o:p></span></p><p class=MsoNormal style='text-autospace:none'><b><span lang=IT style='font-size:6.0pt;mso-fareast-language:IT'>Sede legale e operativa: </span></b><span lang=IT style='font-size:6.0pt;mso-fareast-language:IT'>Via G. Ferraris, 2 - 42122 Reggio Emilia</span><span lang=IT style='font-size:6.0pt;font-family:"MS Gothic";mso-fareast-language:IT'></span><span lang=IT style='font-size:6.0pt;mso-fareast-language:IT'><o:p></o:p></span></p><p class=MsoNormal style='text-autospace:none'><span lang=IT style='font-size:6.0pt;mso-fareast-language:IT'>Tel. +39 0522 265800&nbsp; -&nbsp; Fax +39 0522 393306<o:p></o:p></span></p><p class=MsoNormal style='text-autospace:none'><b><span lang=IT style='font-size:6.0pt;mso-fareast-language:IT'>Sede operativa:</span></b><i><span lang=IT style='font-size:6.0pt;mso-fareast-language:IT'> </span></i><span lang=IT style='font-size:6.0pt;mso-fareast-language:IT'>Via Porta Est, 16 - 30020 Marcon (VE)</span><span lang=IT style='mso-fareast-language:IT'><o:p></o:p></span></p><p class=MsoNormal style='text-autospace:none'><span lang=IT style='font-size:6.0pt;mso-fareast-language:IT'>Tel: 041.5997411 – Fax: 041/5997444<o:p></o:p></span></p><p class=MsoNormal style='text-autospace:none'><b><span lang=IT style='font-size:6.0pt;mso-fareast-language:IT'>Sede operativa </span></b><span lang=IT style='font-size:6.0pt;mso-fareast-language:IT'>Centro Direzionale Cinecittà Due, Edificio U.3.2. Corpo B,<o:p></o:p></span></p><p class=MsoNormal style='text-autospace:none'><span lang=IT style='font-size:6.0pt;mso-fareast-language:IT'>Via U. Quintavalle, 68 - 00173 Roma (RM)<o:p></o:p></span></p><p class=MsoNormal style='text-autospace:none'><b><span lang=IT style='font-size:6.0pt;mso-fareast-language:IT'>Sede operativa:</span></b><span lang=IT style='font-size:6.0pt;mso-fareast-language:IT'> “Centro Direzionale Colleoni”, Palazzo Liocorno A/2,</span><span lang=IT style='mso-fareast-language:IT'><o:p></o:p></span></p><p class=MsoNormal style='text-autospace:none'><span lang=IT style='font-size:6.0pt;mso-fareast-language:IT'>Via Paracelso, 4 - 20864 Agrate Brianza (MB)</span><span lang=IT style='mso-fareast-language:IT'><o:p></o:p></span></p><p class=MsoNormal style='text-autospace:none'><span style='font-size:6.0pt;mso-fareast-language:IT'>Tel: 039.9899011 – Fax: 039.9899020</span><br><br><p class=MsoNormal style='text-autospace:none'><span lang=IT style='font-size:6.0pt;mso-fareast-language:IT'>AVVISO DI RISERVATEZZA – Questa mail può contenere informazioni la cui riservatezza è tutelata. Sono vietati la riproduzione e qualsiasi uso di questa e-mail e/o delle informazioni in essa contenute in mancanza di autorizzazione del destinatario. Le informazioni trasmesse attraverso la presente e-mail ed i suoi allegati sono dirette esclusivamente al destinatario e devono ritenersi riservate con divieto di diffusione salva espressa autorizzazione; La diffusione e la comunicazione da parte di soggetto diverso dal destinatario è vietata dall'art. 616 e ss. c.p. e dalle vigenti norme in materia di protezione dei dati personali. Se la presente e-mail ed i suoi allegati fossero ricevuti per errore da persona diversa dal destinatario siete pregati di distruggere tutto quanto ricevuto e di informare il mittente con lo stesso mezzo. </span><i><span style='font-size:6.0pt;mso-fareast-language:IT'>This e-mail (including attachments) is intended only for the recipient(s) named above. It may contain confidential or privileged information and should not be read, copied or otherwise used by any other person. If you are not the named recipient, please contact me and delete the e-mail from your system.</span></i><span style='font-size:6.0pt;mso-fareast-language:IT'>&nbsp; </span><span lang=IT style='font-size:6.0pt;mso-fareast-language:IT'>- INFORMATIVA SUL TRATTAMENTO DEI SUOI DATI PERSONALI (art. 13 Reg. UE 679/2016) Il Suo indirizzo di posta elettronica è stato acquisito ed è utilizzato da Mead Informatica SRL esclusivamente per finalità di comunicazione diretta, o dell'espletamento dell’incarico professionale ricevuto o servizio erogato, e in genere del rapporto professionale intrattenuto. I dati personali contenuti nei messaggi di posta elettronica in uscita e in entrata possono essere trattati, esclusivamente a fini tecnici, anche da società informatiche terze delle quali Mead Informatica SRL utilizza i servizi. Poiché spesso tali società hanno i loro server in Europa e negli Stati Uniti, i dati personali possono essere trasferiti sia verso Paesi dell’Unione Europea che verso paesi terzi, comunque nel pieno rispetto di quanto prescritto dalle norme in materia di Trasferimento dei dati all'estero. Nel caso in cui Lei desiderasse che il Suo indirizzo di posta elettronica sia rimosso dal nostro archivio, ovvero per l'esercizio dei diritti di cui all'art. 15 e ss del suddetto Regolamento può scrivere al Titolare del trattamento, Mead Informatica SRL, con sede legale in Via G. Ferraris, 2 - 42122 Reggio Emilia</span><span lang=IT style='font-size:6.0pt;font-family:"Tahoma",sans-serif;mso-fareast-language:IT'>.</span><span lang=IT style='font-size:6.0pt;mso-fareast-language:IT'> L' Informativa privacy completa è disponibile a questo </span><span lang=IT style='mso-fareast-language:IT'><a href="http://www.meadinformatica.it/privacy/"><span style='font-size:6.0pt;color:blue'>link - PRIVACY POLICY.</span></a></span><br><p>Power by:<span  lang=IT style='mso-fareast-language:IT'> <br> <img border=0 width=140 height=40  id="Immagine_x0020_2" 
+    src="https://dinets.it/wp-content/uploads/2021/07/logo-rapid7_dinets001.png" >
+    <o:p></o:p></span></p>
