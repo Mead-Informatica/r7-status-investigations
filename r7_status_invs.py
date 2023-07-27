@@ -227,7 +227,7 @@ def parse_json(response, tenant_url):
                 investigations_open.append(Investigation(_title, _status, _source, _created_time, _assignee, _url, _severity))
             elif _status == "INVESTIGATING":
                 investigations_inv.append(Investigation(_title, _status, _source, _created_time, _assignee, _url, _severity))
-            elif _status == "WAITING":
+            elif _status == "WAITING" and _severity != "UNSPECIFIED": #UNSPECIFIED=WHITELIST
                 investigations_waiting.append(Investigation(_title, _status, _source, _created_time, _assignee, _url, _severity))                
 
 
